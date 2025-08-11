@@ -7,3 +7,4 @@ public class StringReplace {
         return s.replace(target, replacement);
     }
 }
+
