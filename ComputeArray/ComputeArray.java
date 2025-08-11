@@ -5,7 +5,7 @@ public class ComputeArray {
         return Arrays.stream(array).map(ele -> {
             if (ele % 3 == 0) {
                 return ele * 5;
-            } else if (ele - 1 % 3 == 0) {
+            } else if (ele % 3 == 1) {
                 return ele + 7;
             } else {
                 return ele;
