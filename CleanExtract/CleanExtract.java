@@ -4,18 +4,16 @@ public class CleanExtract {
         String res = "";
 
         for (String str : splitbyPipe) {
-            String[] splitbyPoint = str.split("\\.");
-            if (!str.contains(".")) {
-                res += " " + str.trim() + " ";
+            int index1 = str.indexOf(".");
+            int index2 = str.lastIndexOf(".");
+            res = res.trim();
+            if (index1 != index2) {
+                String res_str = str.substring(index1 + 1, index2);
+                res += " " + res_str.trim() + " ";
             } else {
-                for (int i = 1; i < splitbyPoint.length; i += 2) {
-                    if (!splitbyPoint[i].trim().isEmpty()) {
-                        res = res.trim();
-                        res += " " + splitbyPoint[i].trim() + " ";
-                    }
-                }
+                String res_str = index1 != -1 ? str.substring(index1 + 1) : str;
+                res += " " + res_str.trim() + " ";
             }
-
         }
         return res.trim();
     }
