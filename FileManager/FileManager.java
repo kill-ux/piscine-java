@@ -1,4 +1,3 @@
-package FileManager;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,9 +11,7 @@ public class FileManager {
     }
 
     public static String getContentFile(String fileName) throws IOException {
-        FileInputStream fis = new FileInputStream(fileName);
-        String res = fis.readAllBytes().toString();
-        fis.close();
+        String res = Files.readString(Paths.get(fileName));
         return res;
     }
 
