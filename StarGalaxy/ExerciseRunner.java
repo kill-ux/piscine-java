@@ -4,7 +4,7 @@ public class ExerciseRunner {
 
     public static void main(String[] args) {
         Galaxy galaxy = new Galaxy();
-        CelestialObject charron = new CelestialObject("Charron", -123.12, 392.238, 32.31, 157);
+        CelestialObject charron = new CelestialObject("Charron", -123.12, 392.238, 32.31);
         CelestialObject lune = new CelestialObject("Lune", 3928.32, 327.239, -12.92, 3987);
         Star betelgeuse = new Star("Betelgeuse", 128.23, -12.82, 32.328, 1289.3, 538595);
         Star altair = new Star("Betelgeuse", 43894.34, -324.43, 9438.23, 123.54, 137273);
