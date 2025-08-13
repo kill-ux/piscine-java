@@ -1,5 +1,4 @@
 
-
 import java.util.Objects;
 
 public class Star extends CelestialObject {
@@ -7,6 +6,10 @@ public class Star extends CelestialObject {
 
     public Star() {
         super();
+    }
+
+    public Star(String name, double x, double y, double z, double mass1) {
+        super(name, x, y, z, (int) mass1);
     }
 
     public Star(String name, double x, double y, double z, double magnitude, int mass1) {
