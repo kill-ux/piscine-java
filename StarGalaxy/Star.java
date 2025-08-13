@@ -1,41 +1,46 @@
+
 import java.util.Objects;
 
 public class Star extends CelestialObject {
     private double magnitude;
 
-    public double getMagnitude() {
-        return magnitude;
-    }
-
-    public void setMagnitude(double new_value) {
-        magnitude = new_value;
-    }
-
     public Star() {
     }
 
-    public Star(String name1, double x1, double y1, double z1, double magnitude1, int mass1) {
-        super(name1, x1, y1, z1, mass1);
-        magnitude = magnitude1;
+    public Star(String name, double x, double y, double z, double mass1) {
+        super(name, x, y, z, (int) mass1);
     }
 
-    @Override
-    public boolean equals(Object other) {
-        if (!(other instanceof Star)){
-            return false;
-        }
-        Star star = (Star) other;
-        return super.equals(star) && magnitude == star.magnitude;
+    public Star(String name, double x, double y, double z, double magnitude, int mass1) {
+        super(name, x, y, z, mass1);
+        this.magnitude = magnitude;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s shines at the %.3f magnitude", getName(), magnitude);
+    public double getMagnitude() {
+        return this.magnitude;
+    }
+
+    public void setMagnitude(double magnitude) {
+        this.magnitude = magnitude;
     }
 
     @Override
     public int hashCode() {
-        return (int) Objects.hash(super.hashCode(),magnitude);
+        return (int) Objects.hash(super.hashCode(), this.magnitude);
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof Star) {
+            Star star1 = (Star) object;
+            return super.equals(star1) && this.magnitude == star1.magnitude;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s shines at the %.3f magnitude", super.getName(), this.magnitude);
+    }
 }
