@@ -60,6 +60,16 @@ public class CelestialObject {
 
     @Override
     public String toString() {
-        return String.format("%s is positioned at ($%,.3f, $%,.3f, $%,.3f)", this.name,this.x,this.y,this.z);
+        return String.format("%s is positioned at ($%,.3f, $%,.3f, $%,.3f)", this.name, this.x, this.y, this.z);
+    }
+
+    @Override
+    public boolean equals(Object object){
+        if (this == object) {
+            return true;
+        } else {
+            CelestialObject star2 = (CelestialObject)object;
+            return star2.x == this.x && star2.y == this.y && star2.z == this.z && star2.name.equals(this.name) ;
+        }
     }
 }
