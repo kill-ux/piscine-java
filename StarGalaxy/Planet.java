@@ -5,12 +5,12 @@ public class Planet extends CelestialObject {
 
     public Planet() {
         super();
-        this.centerStar = new Star();
+        centerStar = new Star();
     }
 
-    public Planet(String name, double x, double y, double z, Star centerStar,int mass) {
-        super(name, x, y, z, mass);
-        this.centerStar = centerStar;
+    public Planet(String name1, double x1, double y1, double z1, Star center, int mass1) {
+        super(name1, x1, y1, z1, mass1);
+        centerStar = center;
     }
 
     public Star getCenterStar() {
@@ -22,24 +22,23 @@ public class Planet extends CelestialObject {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), centerStar.hashCode());
+    public boolean equals(Object other) {
+        if (!(other instanceof Planet)) {
+            return false;
+        }
+        Planet planet = (Planet) other;
+        return super.equals(planet) && centerStar.equals(planet.centerStar);
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (object instanceof Planet) {
-            Planet planet = (Planet) object;
-            return super.equals(planet) && this.centerStar.equals(planet.getCenterStar());
-        } else {
-            return false;
-        }
+    public int hashCode() {
+        return (int) Objects.hash(super.hashCode(), centerStar.hashCode());
     }
 
     @Override
     public String toString() {
-        return String.format("%s circles around %s at the %.3f AU", this.getName(), this.centerStar.getName(),
-                this.getDistanceBetween(this.centerStar, this));
+        return String.format("%s circles around %s at the %.3f AU", super.getName(), centerStar.getName(),
+                super.getDistanceBetween(centerStar, this));
     }
 
 }
