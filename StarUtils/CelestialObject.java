@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 public class CelestialObject {
     private double x;
@@ -72,6 +73,6 @@ public class CelestialObject {
 
     @Override
     public int hashCode() {
-        return (int) (((this.x * this.y * this.z) * 10_000) % 10_000 + this.name.hashCode());
+        return Objects.hash(this.name, this.x, this.y, this.z);
     }
 }
