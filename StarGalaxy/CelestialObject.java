@@ -20,12 +20,12 @@ public class CelestialObject {
         this.name = name;
     }
 
-    public CelestialObject(String name1, double x1, double y1, double z1, int mass1) {
-        this.x = x1;
-        this.y = y1;
-        this.z = z1;
-        this.name = name1;
-        this.mass = mass1;
+    public CelestialObject(String name, double x, double y, double z, int mass) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.name = name;
+        this.mass = mass;
     }
 
     public double getX() {
