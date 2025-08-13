@@ -9,9 +9,8 @@ public class CelestialObject {
     private int mass;
     static final int KM_IN_ONE_AU = 150_000_000;
 
-    public CelestialObject() { //int mass
+    public CelestialObject() {
         this.name = "Soleil";
-        // this.mass = mass;
     }
 
     public CelestialObject(String name, double x, double y, double z, int mass) {
