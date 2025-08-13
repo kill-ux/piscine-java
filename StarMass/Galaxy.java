@@ -20,9 +20,11 @@ public class Galaxy {
 
     public Map<String, Integer> computeMassRepartition() {
         HashMap<String, Integer> map = new HashMap<>();
+        map.put( "Planet", 0);
+        map.put( "Star", 0);
+        map.put( "Other", 0);
         for (CelestialObject obj : this.celestialObjects) {
             String key = (obj instanceof Planet) ? "Planet" : (obj instanceof Star) ? "Star" : "Other";
-            // map.compute(key, (k, v) -> v == null ? 0 : v + obj.getMass());
             map.merge(key, obj.getMass(), Integer::sum);
         }
         return map;
