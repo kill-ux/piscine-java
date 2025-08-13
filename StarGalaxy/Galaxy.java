@@ -5,9 +5,8 @@ import java.util.Map;
 
 public class Galaxy {
     private List<CelestialObject> celestialObjects;
-    private int mass;
 
-    public Galaxy(){
+    public Galaxy() {
         this.celestialObjects = new ArrayList<>();
     }
 
@@ -19,15 +18,13 @@ public class Galaxy {
         this.celestialObjects.add(obj);
     }
 
-    public Map<String,Double> computeMassRepartition(){
-        HashMap res = new HashMap<>();
+    public Map<String, Integer> computeMassRepartition() {
+        HashMap<String, Integer> map = new HashMap<>();
         for (CelestialObject obj : this.celestialObjects) {
-            String key = if (obj instanceof Planet) {
-                "Planet"
-            } else {
-                "Other"
-            };
+            String key = (obj instanceof Planet) ? "Planet" : (obj instanceof Star) ? "Star" : "Other";
+            // map.compute(key, (k, v) -> v == null ? 0 : v + obj.getMass());
+            map.merge(key, obj.getMass(), Integer::sum);
         }
-        return new HashMap<>();
+        return map;
     }
 }
