@@ -6,7 +6,7 @@ public class Star extends CelestialObject {
     private double magnitude;
 
     public Star() {
-        // super();
+        super();
     }
 
     public Star(String name, double x, double y, double z, double magnitude, int mass) {
