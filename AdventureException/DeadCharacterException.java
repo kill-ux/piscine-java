@@ -10,3 +10,4 @@ public class DeadCharacterException extends Exception {
         return String.format("The %s %s is dead.", character.getClass().getName().toLowerCase(), character.getName());
     }
 }
+
