@@ -29,3 +29,4 @@ public class Sorcerer extends Character implements Healer {
                         this.getCurrentHealth(), this.healCapacity);
     }
 }
+
