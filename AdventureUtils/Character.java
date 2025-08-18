@@ -57,7 +57,7 @@ public class Character {
         } else {
             String str = "------------------------------------------\n";
 
-            str += "Characters currently fighting : \n";
+            str += "Characters currently fighting :\n";
 
             for (Character ch : allCharacters) {
                 str += String.format(" - %s\n", ch.toString());
