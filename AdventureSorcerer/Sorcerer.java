@@ -2,7 +2,7 @@ public class Sorcerer extends Character implements Healer {
     private final int healCapacity;
 
     public Sorcerer(String name, int maxHealth, int healCapacity) {
-        super(name, maxHealth);
+        super(name,maxHealth);
         this.healCapacity = healCapacity;
     }
 
@@ -23,7 +23,9 @@ public class Sorcerer extends Character implements Healer {
     @Override
     public String toString() {
         return this.getCurrentHealth() == 0
-                ? String.format("%s is a dead sorcerer. So bad, it could heal %d HP.", this.getName(),this.getCurrentHealth())
-                : String.format("%s is a sorcerer with %d HP. It can heal %d HP.", this.getName(),this.getCurrentHealth(), this.getHealCapacity());
+                ? String.format("%s is a dead sorcerer. So bad, it could heal %d HP.", this.getName(),
+                        this.healCapacity)
+                : String.format("%s is a sorcerer with %d HP. It can heal %d HP.", this.getName(),
+                        this.getCurrentHealth(), this.healCapacity);
     }
 }
