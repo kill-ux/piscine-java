@@ -15,7 +15,7 @@ public abstract class Character {
         allCharacters.add(this);
     }
 
-    public void setCurrentHealth(int currentHealth) {
+    protected void setCurrentHealth(int currentHealth) {
         this.currentHealth = currentHealth;
     }
 
