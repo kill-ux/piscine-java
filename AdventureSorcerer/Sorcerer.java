@@ -1,5 +1,5 @@
 public class Sorcerer extends Character implements Healer {
-    private int healCapacity;
+    public final int healCapacity;
 
     public Sorcerer(String name, int maxHealth, int healCapacity) {
         super(name,maxHealth);
