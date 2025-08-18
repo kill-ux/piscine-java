@@ -30,7 +30,7 @@ public class Character {
     }
 
     public void takeDamage(int subtract) {
-        if (this.currentHealth - subtract > 0) {
+        if (this.currentHealth - subtract >= 0) {
             this.currentHealth -= subtract;
         } else {
             this.currentHealth = 0;
