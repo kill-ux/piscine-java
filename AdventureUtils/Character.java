@@ -57,7 +57,7 @@ public class Character {
         }
 
         for (Character ch : allCharacters) {
-            str += ch.toString() + "\n";
+            str += " - "+ ch.toString() + "\n";
         }
 
         str += "------------------------------------------";
