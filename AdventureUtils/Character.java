@@ -48,7 +48,7 @@ public class Character {
     }
 
     public static String printStatus() {
-        String str = "\n------------------------------------------\n";
+        String str = "------------------------------------------\n";
 
         if (allCharacters.size() == 0) {
             str += "Nobody's fighting right now !\n";
@@ -57,7 +57,7 @@ public class Character {
         }
 
         for (Character ch : allCharacters) {
-            str += " - "+ ch.toString() + "\n";
+            str += String.format(" - %s\n", ch.toString());
         }
 
         str += "------------------------------------------\n";
