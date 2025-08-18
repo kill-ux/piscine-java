@@ -14,7 +14,7 @@ public class Sorcerer extends Character implements Healer {
     @Override
     public void heal(Character ch) {
         if (ch.getCurrentHealth() + this.healCapacity <= ch.getMaxHealth()) {
-            ch.setCurrentHealth(this.healCapacity);
+            ch.setCurrentHealth(this.healCapacity + this.getCurrentHealth());
         } else {
             ch.setCurrentHealth(ch.getMaxHealth());
         }
