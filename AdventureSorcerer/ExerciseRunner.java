@@ -1,16 +1,14 @@
 public class ExerciseRunner {
 
     public static void main(String[] args) {
-        System.out.println(Character.printStatus());
+        Sorcerer gandalf = new Sorcerer("Gandalf", 20, 5);
+        Character frodon = new Character("Frodon", 20);
+        Sorcerer saroumane = new Sorcerer("saroumane", 10, 3);
 
-        Character aragorn = new Character("Aragorn", 20);
-        Character uruk = new Character("Uruk", 15);
+        Character.fight(frodon, saroumane);
+        
+        gandalf.heal(frodon);
 
-        System.out.println(Character.printStatus());
-
-        Character winner = Character.fight(aragorn, uruk);
-
-        System.out.println(winner.toString());
         System.out.println(Character.printStatus());
     }
 }
