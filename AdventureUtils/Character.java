@@ -48,20 +48,24 @@ public class Character {
     }
 
     public static String printStatus() {
-        String str = "------------------------------------------\n";
-
         if (allCharacters.size() == 0) {
-            str += "Nobody's fighting right now !\n";
+            return """
+                    ------------------------------------------
+                    Nobody's fighting right now !
+                    ------------------------------------------
+                    """;
         } else {
+            String str = "------------------------------------------\n";
+
             str += "Characters currently fighting : \n";
-        }
 
-        for (Character ch : allCharacters) {
-            str += String.format(" - %s\n", ch.toString());
-        }
+            for (Character ch : allCharacters) {
+                str += String.format(" - %s\n", ch.toString());
+            }
 
-        str += "------------------------------------------\n";
-        return str;
+            str += "------------------------------------------\n";
+            return str;
+        }
     }
 
     public static Character fight(Character ch1, Character ch2) {
