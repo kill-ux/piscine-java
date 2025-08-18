@@ -30,13 +30,14 @@ public class Character {
     }
 
     public void takeDamage(int subtract) {
-        if (this.currentHealth - subtract >= 0) {
-            this.currentHealth -= subtract;
-        } else {
+        if (this.currentHealth - subtract < 0) {
             this.currentHealth = 0;
+        } else {
+            this.currentHealth -= subtract;
         }
     }
+
     public void attack(Character character) {
-        takeDamage(9);
+        character.takeDamage(9);
     }
 }
