@@ -22,7 +22,7 @@ public class StreamCollect {
         // map.put(3, Optional.empty());
         s.forEach((num) -> {
             Optional<Integer> unwrap = map.get(num % 4);
-            if (unwrap.isPresent()) {
+            if (unwrap != null) {
                 map.put(num % 4, Optional.of(unwrap.get() > num ? unwrap.get() : num));
             } else {
                 map.put(num % 4, Optional.of(num));
