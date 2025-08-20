@@ -14,6 +14,6 @@ public class MapInventory {
                 list.add(entry.getKey());
             }
         }
-        return list;
+        return list;StreamMap/StreamMap.java
     }
 }
