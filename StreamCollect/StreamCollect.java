@@ -16,10 +16,10 @@ public class StreamCollect {
 
     public static Map<Integer, Optional<Integer>> getMaxByModulo4(Stream<Integer> s) {
         Map<Integer, Optional<Integer>> map = new HashMap<>();
-        map.put(0, Optional.empty());
-        map.put(1, Optional.empty());
-        map.put(2, Optional.empty());
-        map.put(3, Optional.empty());
+        // map.put(0, Optional.empty());
+        // map.put(1, Optional.empty());
+        // map.put(2, Optional.empty());
+        // map.put(3, Optional.empty());
         s.forEach((num) -> {
             Optional<Integer> unwrap = map.get(num % 4);
             if (unwrap.isPresent()) {
