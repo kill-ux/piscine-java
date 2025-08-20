@@ -23,13 +23,15 @@ public class StreamCollect {
         s.forEach((num) -> {
             Optional<Integer> unwrap = map.get(num % 4);
             if (unwrap.isPresent()) {
-                map.put(map.get(num % 4).get(), Optional.of(unwrap.get() > num ? unwrap.get() : num));
+                map.put(num % 4, Optional.of(unwrap.get() > num ? unwrap.get() : num));
+            } else {
+                map.put(num % 4, Optional.of(num));
             }
         });
         return map;
     }
 
     public static String orderAndConcatWithSharp(Stream<String> s) {
-        return String.format("{%s}", String.join("#", s.sorted().toList()));
+        return String.format("{%s}", String.join(" # ", s.sorted().toList()));
     }
 }
