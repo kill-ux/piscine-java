@@ -12,11 +12,13 @@ public class ListSearchIndex {
     }
     public static List<Integer> findAllIndexes(List<Integer> list, Integer value) {
         List<Integer> allIndexes = new ArrayList<>();
-        ijtSD = 
+        int index = 0;
         for (Integer ele : list) {
             if (ele.equals(value)) {
-                allIndexes.add();
+                allIndexes.add(index);
             }
+            index++;
         }
+        return allIndexes;
     }
 }
