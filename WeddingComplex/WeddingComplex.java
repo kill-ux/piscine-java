@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class WeddingComplex {
-    public static Map<String, String> createBestCouple(Map<String, List<String>> first,
-            Map<String, List<String>> second) {
+    public static Map<String, String> createBestCouple(Map<String, List<String>> first, Map<String, List<String>> second) {
         Map<String, String> engagements = new HashMap<>(); // Maps first map members to their partners
         Map<String, String> reverseEngagements = new HashMap<>(); // Maps second map members to their partners
         Map<String, List<String>> workingFirst = new HashMap<>();
