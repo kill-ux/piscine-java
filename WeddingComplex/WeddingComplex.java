@@ -6,10 +6,11 @@ import java.util.HashMap;
 public class WeddingComplex {
     public static Map<String, String> createBestCouple(Map<String, List<String>> first,
             Map<String, List<String>> second) {
-        Map<String, String> map = new HashMap<>();
-
-        // Create working copies to avoid modifying original lists
+        Map<String, String> engagements = new HashMap<>(); // Maps first map members to their partners
+        Map<String, String> reverseEngagements = new HashMap<>(); // Maps second map members to their partners
         Map<String, List<String>> workingFirst = new HashMap<>();
+
+        // Create working copies of preference lists
         for (Map.Entry<String, List<String>> entry : first.entrySet()) {
             workingFirst.put(entry.getKey(), new ArrayList<>(entry.getValue()));
         }
@@ -17,74 +18,59 @@ public class WeddingComplex {
         boolean changed;
         do {
             changed = false;
-
             for (Map.Entry<String, List<String>> entry : workingFirst.entrySet()) {
                 String person = entry.getKey();
                 List<String> prefs = entry.getValue();
 
-                if (map.containsKey(person))
-                    continue; // Already engaged
+                // Skip if already engaged or no preferences left
+                if (engagements.containsKey(person) || prefs.isEmpty()) {
+                    continue;
+                }
 
-                if (!prefs.isEmpty()) {
-                    String preferred = prefs.get(0);
+                // Propose to the top preference
+                String preferred = prefs.get(0);
 
-                    // Check if preferred partner exists in second map
-                    if (!second.containsKey(preferred)) {
-                        prefs.remove(0); // Remove invalid preference
-                        changed = true;
+                // Remove the preference (simulating a proposal)
+                prefs.remove(0);
+                changed = true;
+
+                // Check if preferred partner exists in second map
+                if (!second.containsKey(preferred)) {
+                    continue; // Invalid preference, move to next
+                }
+
+                if (!reverseEngagements.containsKey(preferred)) {
+                    // Preferred is free, form engagement
+                    engagements.put(person, preferred);
+                    reverseEngagements.put(preferred, person);
+                } else {
+                    // Preferred is already engaged, check preferences
+                    String currentPartner = reverseEngagements.get(preferred);
+                    List<String> partnerPrefs = second.get(preferred);
+
+                    // Find ranks in partner's preference list
+                    int currentRank = partnerPrefs.indexOf(currentPartner);
+                    int newRank = partnerPrefs.indexOf(person);
+
+                    // If person is not in partner's preferences, skip
+                    if (newRank == -1) {
                         continue;
                     }
 
-                    if (!map.containsKey(preferred)) {
-                        // No conflict
-                        map.put(person, preferred);
-                        // map.put(preferred, person);
-                        changed = true;
-                    } else {
-                        String currentPartner = map.get(preferred);
-                        List<String> partnerPrefs = second.get(preferred);
+                    // If new proposer is preferred over current partner
+                    if (newRank < currentRank) {
+                        // Break current engagement
+                        engagements.remove(currentPartner);
+                        reverseEngagements.remove(preferred);
 
-                        // Check if preferences exist
-                        if (partnerPrefs == null) {
-                            prefs.remove(0); // Remove invalid preference
-                            changed = true;
-                            continue;
-                        }
-
-                        int currentRank = partnerPrefs.indexOf(currentPartner);
-                        int newRank = partnerPrefs.indexOf(person);
-
-                        // Handle case where person is not in partner's preferences
-                        if (newRank == -1) {
-                            prefs.remove(0); // Remove invalid preference
-                            changed = true;
-                            continue;
-                        }
-
-                        if (currentRank == -1 || newRank < currentRank) {
-                            // Reassign engagement
-                            map.remove(currentPartner);
-                            map.remove(preferred);
-
-                            map.put(person, preferred);
-                            map.put(preferred, person);
-
-                            // The rejected person needs to propose again
-                            if (workingFirst.containsKey(currentPartner)) {
-                                // Remove the failed preference and mark for reproposal
-                                List<String> rejectedPrefs = workingFirst.get(currentPartner);
-                                if (!rejectedPrefs.isEmpty()) {
-                                    rejectedPrefs.remove(0);
-                                }
-                            }
-                            changed = true;
-                        }
+                        // Form new engagement
+                        engagements.put(person, preferred);
+                        reverseEngagements.put(preferred, person);
                     }
                 }
             }
+        } while (changed && engagements.size() < first.size());
 
-        } while (changed);
-
-        return map;
+        return engagements;
     }
 }
